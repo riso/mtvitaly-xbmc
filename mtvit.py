@@ -76,9 +76,13 @@ def list_episodes(show_id, show_season):
         ep_title = re.search(title, episode).group(1)
         ep_image = re.search(image, episode).group(1)
         ep_url = re.search(url, episode).group(1)
-        ep_number = re.search(episode_number, episode).group(1)
+        try:
+            ep_number = int(re.search(episode_number, episode).group(1))
+        except:
+            print 'Found no episode number for ' + ep_title + ', assuming is a promo'
+            ep_number = 999
         episodes.append(tuple([ep_title, ep_number, ep_image, build_url({'episode_title': ep_title, 'episode_image': ep_image, 'episode_url' : mtv_base_url + ep_url, 'mode': 'showvid'})]))
-    return sorted(episodes, key = itemgetter(1))
+    return sorted(episodes, key = itemgetter(1, 0))
 
 def build_video_url(episode_url):
     start = '<head>'
