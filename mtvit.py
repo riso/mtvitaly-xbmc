@@ -49,9 +49,7 @@ def build_video_url(episode_url):
     episode_head = requests.get(episode_url).content.split(start,1)[-1].split(end,1)[0].replace('\n', ' ')
     video_id = re.search(link, episode_head).group(1).replace('videolist','video')
     video_url = base_video_url + urllib.urlencode({'uri' : video_id})
-    print video_url
     dom = parse(urllib.urlopen(video_url))
-    print getText(dom.getElementsByTagName("src")[0].childNodes)
     return getText(dom.getElementsByTagName("src")[0].childNodes)
 
 
@@ -67,4 +65,4 @@ if mode is None:
 elif mode[0] == 'showvid':
     episode_url = args['episode_url'][0]
     video_url = build_video_url(episode_url)
-    xbmc.Player().play(video_url)
+    xbmc.Player(xbmc.PLAYER_CORE_AUTO).play(video_url + ' swfurl=http://media.mtvnservices.com/player/prime/mediaplayerprime.2.7.14.swf swfvfy=true')
