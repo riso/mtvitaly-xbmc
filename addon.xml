@@ -5,13 +5,13 @@
     <import addon='script.module.simplejson' version='2.0.10'/>
   </requires>
   <extension point='xbmc.python.pluginsource' library='mtvit.py'>
-        <provides>video</provides>
+    <provides>video</provides>
   </extension>
   <extension point='xbmc.addon.metadata'>
     <platform>all</platform>
     <language>it</language>
     <license>GNU AFFERO GENERAL PUBLIC LICENSE. Version 3, 19 November 2007</license>
-	<source>https://github.com/riso/mtvitaly-xbmc</source>
+    <source>https://github.com/riso/mtvitaly-xbmc</source>
     <email>valerio.ponte@gmail.com</email>
     <summary lang='en'>MTV Italy Ondemand video addon</summary>
     <description lang='en'>Mtv Italy Ondemand can be used to watch your favourite MTV shows from ondemand.mtv.it on XBMC.</description>
