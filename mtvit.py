@@ -1,7 +1,7 @@
 import sys
 import xbmcgui
 import xbmcplugin
-import re, requests, HTMLParser, os, pipes
+import re, requests 
 import urllib, urlparse
 import xbmc
 from xml.dom.minidom import parse

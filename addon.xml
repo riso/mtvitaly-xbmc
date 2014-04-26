@@ -2,7 +2,6 @@
 <addon id='plugin.video.mtvitaly' version='0.0.1' name='MTV Italy Ondemand' provider-name='Valerio Ponte'>
   <requires>
     <import addon='xbmc.python' version='2.1.0'/>
-    <import addon='script.module.simplejson' version='2.0.10'/>
   </requires>
   <extension point='xbmc.python.pluginsource' library='mtvit.py'>
     <provides>video</provides>
