@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='yes'?>
-<addon id='plugin.video.mtvitaly' version='0.0.1' name='MTVItaly' provider-name='Valerio Ponte'>
+<addon id='plugin.video.mtvitaly' version='0.0.1' name='MTV Italy Ondemand' provider-name='Valerio Ponte'>
   <requires>
     <import addon='xbmc.python' version='2.1.0'/>
     <import addon='script.module.simplejson' version='2.0.10'/>
@@ -9,9 +9,13 @@
   </extension>
   <extension point='xbmc.addon.metadata'>
     <platform>all</platform>
-    <language>en</language>
+    <language>it</language>
+    <license>GNU AFFERO GENERAL PUBLIC LICENSE. Version 3, 19 November 2007</license>
 	<source>https://github.com/riso/mtvitaly-xbmc</source>
-    <summary lang='en'>MTV Italy video plugin</summary>
-    <description lang='en'>Watch your favorite MTV shows on XBMC!</description>
+    <email>valerio.ponte@gmail.com</email>
+    <summary lang='en'>MTV Italy Ondemand video addon</summary>
+    <description lang='en'>Mtv Italy Ondemand can be used to watch your favourite MTV shows from ondemand.mtv.it on XBMC.</description>
+    <summary lang='it'>Addon video per MTV Italia Ondemand</summary>
+    <description lang='en'>L'addon MTV Italy Ondemand ti permette di seguire i tuoi show preferiti provenienti da ondemand.mtv.it su XBMC.</description>
   </extension>
 </addon>
