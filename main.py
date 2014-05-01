@@ -2,6 +2,7 @@ from mtvit import MTVItaly
 import sys
 import xbmcgui
 import xbmcplugin
+import xbmcaddon
 import urlparse
 import xbmc
 
@@ -10,6 +11,9 @@ addon_handle = int(sys.argv[1])
 args = urlparse.parse_qs(sys.argv[2][1:])
 
 xbmcplugin.setContent(addon_handle, 'movies')
+addon = xbmcaddon.Addon()
+
+NO_EPISODES = 30001
 
 mtv = MTVItaly(base_url)
 
@@ -24,11 +28,15 @@ if mode is None:
 
 elif mode[0] == 'list_seasons':
     show_id = args['show_id'][0]
-    for season in mtv.list_seasons(show_id):
-        li = xbmcgui.ListItem(season[0])
-        xbmcplugin.addDirectoryItem(handle = addon_handle, url = season[1], listitem = li, isFolder = True)
+    try:
+        for season in mtv.list_seasons(show_id):
+            li = xbmcgui.ListItem(season[0])
+            xbmcplugin.addDirectoryItem(handle = addon_handle, url = season[1], listitem = li, isFolder = True)
 
-    xbmcplugin.endOfDirectory(addon_handle)
+        xbmcplugin.endOfDirectory(addon_handle)
+    except:
+        dialog = xbmcgui.Dialog()
+        ok = dialog.ok('MTV Italy Ondemand', addon.getLocalizedString(NO_EPISODES))
 
 elif mode[0] == 'list_episodes':
     season_id = args['season_id'][0]

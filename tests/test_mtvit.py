@@ -19,8 +19,8 @@ class TestMTV(unittest.TestCase):
         self.assertIn('Stagione 1', titles)
 
     def test_list_seasons_empty(self):
-        seasons = self.mtv.list_seasons('ballerini-dietro-il-sipario')
-        self.assertIsNone(seasons)
+        with self.assertRaises(Exception):
+            self.mtv.list_seasons('ballerini-dietro-il-sipario')
 
     def test_list_episodes(self):
         episodes = self.mtv.list_episodes('il-testimone', 's01')
