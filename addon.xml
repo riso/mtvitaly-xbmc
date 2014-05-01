@@ -3,7 +3,7 @@
   <requires>
     <import addon='xbmc.python' version='2.1.0'/>
   </requires>
-  <extension point='xbmc.python.pluginsource' library='mtvit.py'>
+  <extension point='xbmc.python.pluginsource' library='main.py'>
     <provides>video</provides>
   </extension>
   <extension point='xbmc.addon.metadata'>
