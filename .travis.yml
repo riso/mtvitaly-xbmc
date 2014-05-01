@@ -1,6 +1,6 @@
 language: python
 
-install: pip install --use-mirrors requests
+install: pip install requests
 # command to run tests, e.g. python setup.py test
 script: python -m unittest discover
 

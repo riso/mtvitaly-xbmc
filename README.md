@@ -1,6 +1,8 @@
 mtvitaly-xbmc
 =============
 
+ [![Build Status](https://travis-ci.org/riso/mtvitaly-xbmc.svg?branch=master)](https://travis-ci.org/riso/mtvitaly-xbmc)
+
 An XBMC addon that can be used to watch MTV Italy shows hosted on MTV Ondemand
 
 # Installation
