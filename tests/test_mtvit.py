@@ -18,6 +18,10 @@ class TestMTV(unittest.TestCase):
         titles = tuple(season[0] for season in seasons)
         self.assertIn('Stagione 1', titles)
 
+    def test_list_seasons_empty(self):
+        seasons = self.mtv.list_seasons('ballerini-dietro-il-sipario')
+        self.assertIsNone(seasons)
+
     def test_list_episodes(self):
         episodes = self.mtv.list_episodes('il-testimone', 's01')
         self.assertIsNotNone(episodes)
