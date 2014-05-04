@@ -50,8 +50,10 @@ elif mode[0] == 'list_episodes':
 elif mode[0] == 'showvid':
     episode_title = args['episode_title'][0]
     episode_image = args['episode_image'][0]
-    episode_url = args['episode_url'][0]
-    video_url = mtv.build_video_url(episode_url)
+    show_id = args['show_id'][0]
+    season_id = args['season_id'][0]
+    episode_id = args['episode_id'][0]
+    video_url = mtv.build_video_url(show_id, season_id, episode_id)
     li = xbmcgui.ListItem(episode_title, iconImage=episode_image)
     li.setInfo('video', { 'Title' : episode_title})
     xbmc.Player(xbmc.PLAYER_CORE_AUTO).play(video_url + ' swfurl=http://media.mtvnservices.com/player/prime/mediaplayerprime.2.7.14.swf swfvfy=true', li)
