@@ -97,7 +97,6 @@ class MTVItaly():
         video_qualities = dom.getElementsByTagName('rendition')
         qualities = []
         for video_quality in video_qualities:
-            print video_quality.toxml()
             q_bitrate = int(video_quality.attributes['bitrate'].value)
             q_url = self._getText(video_quality.getElementsByTagName('src')[0].childNodes)
             qualities.append(tuple([q_bitrate, q_url]))
