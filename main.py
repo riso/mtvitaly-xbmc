@@ -12,10 +12,11 @@ args = urlparse.parse_qs(sys.argv[2][1:])
 
 xbmcplugin.setContent(addon_handle, 'movies')
 addon = xbmcaddon.Addon()
+quality = int(addon.getSetting('quality'))
 
 NO_EPISODES = 30001
 
-mtv = MTVItaly(base_url)
+mtv = MTVItaly(base_url, quality)
 
 mode = args.get('mode', None)
 
@@ -55,5 +56,5 @@ elif mode[0] == 'showvid':
     episode_id = args['episode_id'][0]
     video_url = mtv.build_video_url(show_id, season_id, episode_id)
     li = xbmcgui.ListItem(episode_title, iconImage=episode_image)
-    li.setInfo('video', { 'Title' : episode_title})
+    li.setInfo('video', {'Title' : episode_title})
     xbmc.Player(xbmc.PLAYER_CORE_AUTO).play(video_url + ' swfurl=http://media.mtvnservices.com/player/prime/mediaplayerprime.2.7.14.swf swfvfy=true', li)

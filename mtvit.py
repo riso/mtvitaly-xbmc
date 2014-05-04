@@ -4,10 +4,11 @@ from xml.dom.minidom import parse
 from operator import itemgetter
 
 class MTVItaly():
-    mtv_base_url =  'http://ondemand.mtv.it'
+    mtv_base_url = 'http://ondemand.mtv.it'
 
-    def __init__(self, base_url):
+    def __init__(self, base_url, quality):
         self._base_url = base_url
+        self._quality = quality
 
     def _build_url(self, query):
         return self._base_url + '?' + urllib.urlencode(query)
@@ -52,7 +53,7 @@ class MTVItaly():
             season_id = groups.group(1)
             season_title = groups.group(2)
             seasons.append(tuple([season_title, self._build_url({'show_id': show_id, 'season_id': season_id, 'mode': 'list_episodes'})]))
-        return sorted(seasons, key = itemgetter(0))
+        return sorted(seasons, key=itemgetter(0))
 
     def list_episodes(self, show_id, season_id):
         mtv_url = self.mtv_base_url + '/serie-tv/' + show_id + '/' + season_id
@@ -79,6 +80,11 @@ class MTVItaly():
         return sorted(episodes, key=itemgetter(1, 0))
 
     def build_video_url(self, show_id, season_id, episode_id):
+        video_qualities = self.list_video_qualities(show_id, season_id, episode_id)
+        normalized_qualities = self.normalize_qualities(video_qualities)
+        return normalized_qualities[self._quality]
+
+    def list_video_qualities(self, show_id, season_id, episode_id):
         mtv_url = self.mtv_base_url + '/serie-tv/' + show_id + '/' + season_id + '/' + episode_id
         start = '<head>'
         end = '</head>'
@@ -88,4 +94,17 @@ class MTVItaly():
         video_id = re.search(link, episode_head).group(1).replace('videolist', 'video')
         video_url = base_video_url + urllib.urlencode({'uri' : video_id})
         dom = parse(urllib.urlopen(video_url))
-        return self._getText(dom.getElementsByTagName('src')[0].childNodes)
+        video_qualities = dom.getElementsByTagName('rendition')
+        qualities = []
+        for video_quality in video_qualities:
+            q_bitrate = int(video_quality.attributes["bitrate"].value)
+            q_url = self._getText(video_quality.getElementsByTagName('src')[0].childNodes)
+            qualities.append(tuple([q_bitrate, q_url]))
+        return qualities
+
+    def normalize_qualities(self, video_qualities):
+        sorted_qualities = sorted(video_qualities, key=itemgetter(0))
+        urls = tuple(q[1] for q in sorted_qualities)
+        return [urls[0], urls[len(sorted_qualities) / 2], urls[-1]]
+
+

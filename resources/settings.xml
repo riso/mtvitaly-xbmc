@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+	<category label="32001">
+		<setting label="30002" type="enum" id="quality" lvalues="30003|30004|30005" default="2" />
+	</category>
+</settings>

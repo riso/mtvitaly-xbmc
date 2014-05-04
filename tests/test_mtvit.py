@@ -4,7 +4,7 @@ from mtvit import MTVItaly
 class TestMTV(unittest.TestCase):
 
     def setUp(self):
-        self.mtv = MTVItaly('mock_url://')
+        self.mtv = MTVItaly('mock_url://', 3)
 
     def test_list_show(self):
         shows = self.mtv.list_shows()
@@ -28,6 +28,11 @@ class TestMTV(unittest.TestCase):
         titles = tuple(episode[0] for episode in episodes)
         self.assertIn('Loco, loco, loco', titles)
 
+    def test_quality_selection(self):
+        episode_qualities = self.mtv.list_video_qualities('il-testimone', 's01', 'il-testimone-s01e07')
+        self.assertIsNotNone(episode_qualities)
+        normalized_qualities = self.mtv.normalize_qualities(episode_qualities)
+        self.assertEqual(3, len(normalized_qualities))
 
 if __name__ == '__main__':
     suite = unittest.TestLoader().loadTestsFromTestCase(TestSequenceFunctions)

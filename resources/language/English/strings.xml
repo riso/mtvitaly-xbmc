@@ -2,4 +2,8 @@
 
 <strings>
 	<string id="30001">No episode are available for the selected show</string>
+	<string id="30002">Video quality</string>
+	<string id="30003">Minimum</string>
+	<string id="30004">Medium</string>
+	<string id="30005">Maximum</string>
 </strings>
