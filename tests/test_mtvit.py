@@ -28,6 +28,12 @@ class TestMTV(unittest.TestCase):
         titles = tuple(episode[0] for episode in episodes)
         self.assertIn('Loco, loco, loco', titles)
 
+    def test_quality_selection(self):
+        episode_qualities = self.mtv.list_video_qualities('il-testimone', 's01', 'il-testimone-s01e07')
+        self.assertIsNotNone(episode_qualities)
+        normalized_qualities = self.mtv.normalize_qualities(episode_qualities)
+        self.assertEqual(3, len(normalized_qualities))
+
 if __name__ == '__main__':
     suite = unittest.TestLoader().loadTestsFromTestCase(TestSequenceFunctions)
     unittest.TextTestRunner(verbosity=2).run(suite)
