@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<package version="1.4">
+<video>
+<item>
+
+<rendition cdn="akamai" duration="1364" width="384" height="288" type="video/mp4" bitrate="400">
+<src>rtmpe://cp24806.edgefcs.net/ondemand/mtviestor/_!/intlod/it/ontv/il_testimone/stagione_01/it_mtv_il_testimone_107_384x288_400_m30.mp4</src>
+</rendition>
+
+<rendition cdn="akamai" duration="1364" width="448" height="336" type="video/mp4" bitrate="600">
+<src>rtmpe://cp24806.edgefcs.net/ondemand/mtviestor/_!/intlod/it/ontv/il_testimone/stagione_01/it_mtv_il_testimone_107_448x336_600_m30.mp4</src>
+</rendition>
+
+<rendition cdn="akamai" duration="1364" width="480" height="360" type="video/mp4" bitrate="900">
+<src>rtmpe://cp24806.edgefcs.net/ondemand/mtviestor/_!/intlod/it/ontv/il_testimone/stagione_01/it_mtv_il_testimone_107_480x360_900_m30.mp4</src>
+</rendition>
+
+<rendition cdn="akamai" duration="1364" width="576" height="432" type="video/mp4" bitrate="1200">
+<src>rtmpe://cp24806.edgefcs.net/ondemand/mtviestor/_!/intlod/it/ontv/il_testimone/stagione_01/it_mtv_il_testimone_107_576x432_1200_m30.mp4</src>
+</rendition>
+
+<rendition cdn="akamai" duration="1364" width="640" height="480" type="video/mp4" bitrate="1600">
+<src>rtmpe://cp24806.edgefcs.net/ondemand/mtviestor/_!/intlod/it/ontv/il_testimone/stagione_01/it_mtv_il_testimone_107_640x480_1600_m30.mp4</src>
+</rendition>
+
+<beacons>
+
+<beacon url="http://viamtvnvideo.112.2o7.net/b/ss/viamtvnvideo/1/H.1-pdv-2/{ord}?c20=mtv.it" elapsed="20"/>
+
+</beacons>
+
+</item>
+
+<item placement="overlay" format="image" xPercent="97" yPercent="3" startTime="0" duration="6000000" width="41" height="28" scaling="true" persist="true">
+<src>http://intl.esperanto.mtvi.com/player/sites/mtv.it/mtv_bug_new.png</src>
+<clickTag>http://www.mtv.it</clickTag>
+</item>
+
+</video>
+</package>	
+
+
+
+
+
+
+
+
+

@@ -1,6 +1,6 @@
 language: python
 
-install: pip install requests
+install: pip install requests mock
 # command to run tests, e.g. python setup.py test
 script: python -m unittest discover
 

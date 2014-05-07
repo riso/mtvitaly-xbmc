@@ -1,3 +1,5 @@
+import os
+import mock
 import unittest
 from mtvit import MTVItaly
 
@@ -28,7 +30,11 @@ class TestMTV(unittest.TestCase):
         titles = tuple(episode[0] for episode in episodes)
         self.assertIn('Loco, loco, loco', titles)
 
-    def test_quality_selection(self):
+    
+    @mock.patch('mtvit.urllib')
+    def test_quality_selection(self, mock_urllib):
+        fn = os.path.join(os.path.dirname(__file__), 'mocks', 'video_qualities_mock.xml')
+        mock_urllib.urlopen.return_value = fn
         episode_qualities = self.mtv.list_video_qualities('il-testimone', 's01', 'il-testimone-s01e07')
         self.assertIsNotNone(episode_qualities)
         normalized_qualities = self.mtv.normalize_qualities(episode_qualities)
