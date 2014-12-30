@@ -22,7 +22,7 @@ mode = args.get('mode', None)
 
 if mode is None:
     for show in mtv.list_shows():
-        li = xbmcgui.ListItem(show[0], iconImage = show[1])
+        li = xbmcgui.ListItem(show[0], iconImage = show[1], thumbnailImage = show[1])
         xbmcplugin.addDirectoryItem(handle = addon_handle, url = show[2], listitem = li, isFolder = True)
 
     xbmcplugin.endOfDirectory(addon_handle)
@@ -43,7 +43,7 @@ elif mode[0] == 'list_episodes':
     season_id = args['season_id'][0]
     show_id = args['show_id'][0]
     for episode in mtv.list_episodes(show_id, season_id):
-        li = xbmcgui.ListItem(episode[0], iconImage=episode[2])
+        li = xbmcgui.ListItem(episode[0], iconImage=episode[2], thumbnailImage=episode[2])
         xbmcplugin.addDirectoryItem(handle=addon_handle, url=episode[3], listitem=li, isFolder = True)
 
     xbmcplugin.endOfDirectory(addon_handle)
